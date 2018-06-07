@@ -1,10 +1,3 @@
-/**************************************************************************
-** TODO: OBJETIVIZAR!!!
-** - Separar en 3 etapas de funciones:
-** --- INICIO: Buscar twits y purificarlos
-** --- DEFINE FIRST and LAST HALF: 
-** --- JOIN FIRST and HALF: Aplicar logica de sintaxis (palabras centrales iguales, last comenzar con minuscula si first no termina en puntuacion o es el inicio de la frase, etc)
-**************************************************************************/
 'use strict';
 require('dotenv').config();
 const Sentence = require('./Sentence.js');
@@ -19,18 +12,12 @@ var T = new Twit({
 	access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
 });
 
-/**************************************************************************
-** SOURCES. 
-** REMOVES 'chilevision', 'TerraChile', 'el_dinamo', 
-**************************************************************************/
 var sourcesArray = process.env.SOURCE_ARRAY.split(' ');
-//var sourcesArray = ['biobio', 'adnradiochile','bbcmundo', 'Cooperativa', '24HorasTVN', 'CNNChile', 'latercera', 'elmostrador', 'thecliniccl', 'Deportes13cl', 'ahoranoticiasAN', 'DiarioLaHora', 'nacioncl', 'Tele13_Radio', 'lacuarta','ElGraficoChile', 'soychilecl', 'emol', 'CNNEE', 'ElNacionalWeb', 'el_pais'];
-//var sourcesArray = ['cnnbrk', 'BBCWorld', 'BBCBreaking', 'nytimes', 'FoxNews', 'WSJ', 'ABC', 'TheEconomist', 'washingtonpost', 'AP', 'AJEnglish', 'CBSNews', 'SkyNewsBreak', 'enews', 'cnni'];
 var totalCharacters = process.env.TWITTER_CHAR_LIMIT;
 
-//RUN, BITCH!
+//RUN, FORREST, RUN!
 tweetIt();
-setInterval( function() {  tweetIt();  }, process.env.TWEET_TIME ); //1000*60*10
+setInterval( function() {  tweetIt();  }, process.env.TWEET_TIME ); 
 
 
 function tweetIt() {

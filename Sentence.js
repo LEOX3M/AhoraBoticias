@@ -55,7 +55,6 @@ Sentence.prototype.initSentence = function(data){
 ** Si se agrega mas info, se debe agrear el atributo correspondiente a Sentence
 **************************************************************************/
 Sentence.prototype.obtainImportantData = function(data) {
-	console.log(data);
 	var dataLength = data.length;
 	this.originalText = data[dataLength-1].full_text;
 	if(this.finalText === undefined)
@@ -71,8 +70,6 @@ Sentence.prototype.obtainImportantData = function(data) {
 ** Elimina links, RT, etc.
 **************************************************************************/
 Sentence.prototype.purifyInitialText = function() {
-
-
 	//Remover emojis si es requerido
   	if(this.removeEmojis && this.firstIndexOf(this.finalText, pattEmoji) != -1)
   		this.finalText = this.deletePattern(this.finalText, pattEmoji);
@@ -92,8 +89,6 @@ Sentence.prototype.purifyInitialText = function() {
 	this.finalText = this.deletePattern(this.finalText, pattTwoSpaces);
 
 	this.finalText = this.finalText.trim();
-
-	//TODO: Agregar mas validiaciones de limpieza al texto original.
 };
 
 /**************************************************************************
@@ -125,8 +120,6 @@ Sentence.prototype.evaluate = function() {
 		}
 		
 	}
-
-
 	//Puntuacion
 	var indexOfPuntuacion = this.firstIndexOf(this.finalText, pattPuntuacion);
 	if(indexOfPuntuacion == -1){
@@ -151,9 +144,6 @@ Sentence.prototype.evaluate = function() {
 	if(indexOfHashTag == -1){
 		this.evaluation = this.evaluation -20;
 	}
-
-	//this.evaluation = this.evaluation + Math.floor(this.finalText.length / 2);
-	//console.log(this.name+'-> eval:'+this.evaluation + '--this.indexOfCut:'+this.indexOfCut);
 };
 
 /**************************************************************************
@@ -162,7 +152,6 @@ Sentence.prototype.evaluate = function() {
 Sentence.prototype.cutToIndexOfCut = function(){
 	var str = this.finalText;
 	var indexToCut = this.indexOfCut;
-  // console.log(this.name+'-> indexToCut:'+this.indexOfCut + '--this.leftOrRight:'+this.leftOrRight);
 	if(indexToCut > 0){
 		if(this.leftOrRight == 0)
 			this.finalText = str.slice(0, indexToCut+1);
@@ -204,8 +193,6 @@ Sentence.prototype.purifyLeft = function() {
 
 	//Debe empezar con mayuscula
 	this.firstLetterToUpperOrLowerCase();
-
-	//Agregar validaciones
 };
 
 
@@ -219,8 +206,6 @@ Sentence.prototype.purifyRight = function() {
 
 	//Debe empezar con minuscula. (TODO: Evaluar para sustantivos propios)
 	this.firstLetterToUpperOrLowerCase();
-	//this.finalText = this.removeSingleCharWordAtBegining();
-	//Agregar validaciones
 };
 
 
@@ -257,8 +242,6 @@ Sentence.prototype.firstTextMatch = function(str, pattern){
 ** deletePattern: Elimina todo pattern dentro de la palabra. Retorna STRING
 **************************************************************************/
 Sentence.prototype.deletePattern = function(str, pattern){
-	//console.log('deletePattern[str]:'+str);
-	//console.log('deletePattern[pattern]:'+pattern);
 	return str.replace(pattern,""); 
 };
 
@@ -321,8 +304,7 @@ Sentence.prototype.validateSentence = function() {
 		return;
 	}
 
-	// //Buscamos si tiene mas de dos palabras consecutivas en mayusculas
-	
+	//Buscamos si tiene mas de dos palabras consecutivas en mayusculas
 	var sentenceArray = this.finalText.split(" ");
 	var strikeOne = false;
 	for (var i = 0; i < sentenceArray.length; i++){
@@ -331,8 +313,6 @@ Sentence.prototype.validateSentence = function() {
 	 			strikeOne = true;
 	 		}else{
 	 			console.log("UPPERCASED. NOW VALID ["+this.finalText+"]");
-	 			//this.validSentence = false;
-	 			//return;
 	 		}
 	 	}else{
 	 		strikeOne = false;
