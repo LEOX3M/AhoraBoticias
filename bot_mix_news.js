@@ -44,6 +44,10 @@ function tweetIt() {
 	//GET Sentence1
 	var count = randomCount();
 	T.get('statuses/user_timeline', { screen_name: sentence1.source, count: count, tweet_mode: 'extended'}, function (err, data, response) {
+		if(err){
+			console.log(err);
+			return;
+		}
 		sentence1.initSentence(data);
 		if(!sentence1.validSentence){
 			console.log('_____________________________________');
@@ -53,6 +57,10 @@ function tweetIt() {
 		
 		//GET Sentence2
 		T.get('statuses/user_timeline', { screen_name: sentence2.source, count: count, tweet_mode: 'extended' }, function (err, data, response) {
+			if(err){
+				console.log(err);
+				return;
+			}
 			sentence2.initSentence(data);
 			if(!sentence2.validSentence){
 				console.log('_____________________________________');

@@ -55,16 +55,14 @@ Sentence.prototype.initSentence = function(data){
 ** Si se agrega mas info, se debe agrear el atributo correspondiente a Sentence
 **************************************************************************/
 Sentence.prototype.obtainImportantData = function(data) {
+	console.log(data);
 	var dataLength = data.length;
-	this.originalText = data[dataLength-1].text;
+	this.originalText = data[dataLength-1].full_text;
 	if(this.finalText === undefined)
-		this.finalText = data[dataLength-1].text;
+		this.finalText = this.originalText;
 	this.truncated = data[dataLength-1].truncated;
 	if(data[dataLength-1].entities.hasOwnProperty("media"))
   		this.mediaUrl = data[dataLength-1].entities.media[0].media_url;
-	//TODO: Agregar mas atributos necesarios
-
-	//console.log(data);
 };
 
 
