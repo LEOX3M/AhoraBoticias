@@ -244,9 +244,7 @@ Tweet.prototype.findSustantivosPropiosJoinMix = function(){
 ** generateBasicTwit: Genera un twit basico por separacion de N palabras y concatenacion
 **************************************************************************/
 Tweet.prototype.generateBasicTwit = function(){
-	this.sentence1.finalText = '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'; //100
-	this.sentence2.finalText = '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890'; //100
-	/* Logica para generar twit con corte. Se modifica para generar error de largo de caracteres y lance otra busqueda de sentence.
+	//Logica para generar twit con corte. Se modifica para generar error de largo de caracteres y lance otra busqueda de sentence.
 	//Corte base de la frase. Equitativo para ambas palabras
 	this.sentence1.cutToBaseNumberOfWords();
 	this.sentence2.cutToBaseNumberOfWords();
@@ -258,9 +256,6 @@ Tweet.prototype.generateBasicTwit = function(){
 		this.sentence2.removeOneWord();
 		this.generateBasicTwit();
 	}
-	*/
-
-	
 };
 
 
