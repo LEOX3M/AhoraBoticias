@@ -1,0 +1,16 @@
+{
+  "name": "ahoraboticias",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot_mix_news.js",
+  "scripts": {
+    "start": "node bot_mix_news.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "twit": "^2.2.9"
+  }
+}

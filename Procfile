@@ -1,0 +1,1 @@
+worker: node bot_mix_news.js
